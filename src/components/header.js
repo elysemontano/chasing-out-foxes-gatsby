@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import { IconButton, Divider, SwipeableDrawer, AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import ChevronIcon from '@material-ui/icons/ChevronRight'
+import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Social from '../components/Social'
 
 
 
@@ -14,8 +15,9 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: 'inherit',
     display: 'flex',
-    alignItems: 'center',
-    flexGrow: 1
+    justifyContent: 'right',
+    flexGrow: 1,
+    textAlign: 'right',
   },
   nav: {
     display: 'flex',
@@ -26,9 +28,9 @@ const useStyles = makeStyles(theme => ({
   navDrawer: {
     color: "#292e32", 
     display:"flex", 
-    flexDirection: "column", 
+    flexDirection: "column",
     padding: "10px", 
-    paddingLeft: "20px"
+    paddingLeft: "20px",
   },
   appBarTransparent: {
     backgroundColor: "#292e32",
@@ -41,11 +43,6 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     color: '#fff',
   },
-  linkContainer: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
   toolbar: {
     width: '80%'
   },
@@ -55,7 +52,23 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     background: "#292e32",
-    color: "white"
+    color: "white",
+  },
+  customizedButton: {
+    position: 'absolute',
+    left: '95%',
+    top: '9%',
+ },
+ customizedMenu: {
+  position: 'absolute',
+  display: 'flex',
+  justifyContent: 'right',
+},
+  logoContainer: {
+    position: 'absolute',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center'
   }
 }))
 
@@ -68,7 +81,7 @@ const navigationLinks = [
 function Navigation({style}) {
   const styles = useStyles()
   return (
-      <div>
+      <div style={{marginTop: '50px'}}>
           {navigationLinks.map((item, id) => (
               <Link
                   className={styles.link}
@@ -112,27 +125,31 @@ const Header = ({ siteTitle }) => {
     <AppBar className={styles[navRef.current]} position="sticky" >
       <div className={styles.nav}>
         <Toolbar className={styles.toolbar}>
-            <Link to='/' className={styles.link}>
+          <Social style={{color: "#e9f0f3", paddingBottom: "25px"}}/>
+        </Toolbar>
+        <div className={styles.logoContainer}>
+        {window.location.pathname !== "/" ? (
+          <Link to='/' className={styles.link}>
               <StaticImage 
                           src="../images/CoF logo White Outline.png" 
                           alt="Chasing Out Foxes Logo" 
                           className={styles.logo}/>
-              <Typography variant='h6' component='h1' className={styles.title}>{ siteTitle }</Typography>
-            </Link>
-          </Toolbar>
+              </Link>
+              ) : null}
+        </div>
           <div onClick={() => setOpen(true)}>                    
                       <IconButton style={{color: "white"}}>
-                          <MenuIcon />
+                          <MenuIcon style={{ fontSize: 35 }}/>
                       </IconButton>
           </div>
-        <SwipeableDrawer classes={{ paper: styles.paper}} anchor="right" open={open} onOpen={()=> setOpen(true)} onClose={()=> setOpen(false)}>
+        <SwipeableDrawer classes={{ paper: styles.paper}} anchor="top" open={open} onOpen={()=> setOpen(true)} onClose={()=> setOpen(false)}>
           <div onClick={()=> setOpen(false)}>
-                        <IconButton>
-                            <ChevronIcon style={{color: "white" }}/>
+                        <IconButton className={styles.customizedButton}>
+                            <ExpandLessIcon style={{color: "white" }}/>
                         </IconButton>
             </div>
             <Divider/>
-            <Navigation style={{color: "#e9f0f3", display:"flex", flexDirection: "column", padding: "10px", paddingLeft: "20px"}}/>  
+            <Navigation style={{ flexDirection: "column", padding: "10px", }} className={styles.customizedMenu}/>  
         </SwipeableDrawer>
       </div>
     </AppBar>

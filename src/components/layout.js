@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core'
 import Header from "./Header"
 import Home from "../pages/Home"
+import Footer from "./Footer"
 
 const useStyles = makeStyles({
   main: {
@@ -40,6 +41,8 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       
       <Home/>
+
+      <Footer />
       {/* <main className={classes.main}>{children}</main> */}
     </>
   )
