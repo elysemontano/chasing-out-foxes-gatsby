@@ -9,9 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core'
-import Header from "./Header"
+import Header from "./header"
 import Home from "../pages/Home"
-import Footer from "./Footer"
+import Footer from "./footer"
 
 const useStyles = makeStyles({
   main: {

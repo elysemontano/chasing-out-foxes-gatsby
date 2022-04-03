@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Social from '../components/Social'
+import Social from './social'
 
 
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     color: 'inherit',
     display: 'flex',
-    justifyContent: 'right',
+    justifyContent: 'center',
     flexGrow: 1,
     textAlign: 'right',
   },
@@ -55,25 +55,24 @@ const useStyles = makeStyles(theme => ({
     color: "white",
   },
   customizedButton: {
-    position: 'absolute',
+    position: 'relative',
     left: '95%',
     top: '9%',
  },
  customizedMenu: {
-  position: 'absolute',
+  position: 'relative',
   display: 'flex',
   justifyContent: 'right',
 },
   logoContainer: {
     position: 'absolute',
     width: '100%',
-    display: 'flex',
-    justifyContent: 'center'
+
   }
 }))
 
 const navigationLinks = [
-  {name: "Artists", href: "" },
+  {name: "Artists", href: "/artists" },
   {name: "Songs", href: "" },
   {name: "Contact", href: "" },
 ];

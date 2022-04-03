@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Social from '../components/Social'
+import Social from './social'
 import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
